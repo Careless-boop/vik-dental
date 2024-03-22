@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --worker-background-color: rgb(230,230,230);
+  --team-background-color: rgb(220, 253, 253);
+  --pricing-schedule-text-color: rgb(245, 245, 245);
+  --pricing-schedule-headings-color: rgb(104, 248, 253);
+  --pricing-schedule-background-color: rgb(3, 144, 150);
+  --pricing-background-color: rgba(240, 255, 255, 0.4);
+  --schedule-background-color: rgba(1, 73, 75, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --about-icons-background-color: rgb(220, 253, 253);
+  --about-background-color: white;
+  --hero-background-color: rgb(3, 144, 150);
+  --hero-description-color: rgb(245, 255, 255);
+  --hero-title-color: rgb(104, 248, 253);
+  --additionals-background-color: rgb(1, 73, 75);
+  --alternative-additionals-background-color: rgb(245, 255, 255);
+  --navigation-background-color: transparent;
+  --subtitles-color: rgb(2, 146, 151);
+  --alternative-text-color: rgb(1, 73, 75);
+  --text-color: rgb(128, 128, 128);
+  font-size: 18px;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 300;
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--alternative-text-color);
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+@media (max-width:768px) {
+  :root{
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,53 @@
+.pricing-schedule {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--pricing-schedule-background-color);
+  background-position: 0 0, 25px 25px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.5) 2%, transparent 2%),
+    radial-gradient(rgba(255, 255, 255, 0.5) 2%, transparent 2%);
+  background-size: 50px 50px;
+}
+.pricing-schedule-container{
+  padding-top: 35px;
+  padding-bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.pricing-schedule__schedule {
+  background-color: var(--schedule-background-color);
+}
+.pricing-schedule__prices {
+  background-color: var(--pricing-background-color);
+}
+.pricing-schedule__schedule,
+.pricing-schedule__prices {
+  flex: 1;
+  padding: 20px;
+}
+
+.pricing-schedule__heading {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--pricing-schedule-headings-color);
+}
+
+.pricing-schedule__days,
+.pricing-schedule__price-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pricing-schedule__day,
+.pricing-schedule__price-item {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  color: var(--pricing-schedule-text-color);
+  border-bottom: 1px solid var(--pricing-schedule-headings-color);
+}
+@media (max-width:768px) {
+  .pricing-schedule-container{
+    flex-direction: column;
+  }
+}
