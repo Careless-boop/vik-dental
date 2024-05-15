@@ -7,7 +7,7 @@
     radial-gradient(rgba(255, 255, 255, 0.5) 2%, transparent 2%);
   background-size: 50px 50px;
 }
-.pricing-schedule-container{
+.pricing-schedule-container {
   padding-top: 35px;
   padding-bottom: 35px;
   display: flex;
@@ -25,6 +25,7 @@
 .pricing-schedule__prices {
   flex: 1;
   padding: 20px;
+  position: relative;
 }
 
 .pricing-schedule__heading {
@@ -46,8 +47,128 @@
   color: var(--pricing-schedule-text-color);
   border-bottom: 1px solid var(--pricing-schedule-headings-color);
 }
-@media (max-width:768px) {
-  .pricing-schedule-container{
+.price-item__add-button{
+  padding: 3px 6px;
+  background-color: var(--alternative-additionals-background-color);
+  color: var(--additionals-background-color);
+  font-weight: 500;
+  font-size: 1em;
+  box-shadow: 1px 1px 3px var(--shadow-color);
+  border: none;
+}
+.total__count {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(3 144 150);
+  border-radius: 8px;
+  color: var(--pricing-schedule-text-color);
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+.total__book {
+  position: relative;
+  padding: 3px 6px;
+  background-color: var(--alternative-additionals-background-color);
+  color: var(--additionals-background-color);
+  font-weight: 500;
+  font-size: 1em;
+  box-shadow: 1px 1px 3px var(--shadow-color);
+  border: none;
+}
+.pricing-schedule__modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(98, 188, 192, 0.3);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+.modal__content {
+  background-color: rgb(2, 115, 120, 0.6);
+  border-radius: 10px;
+  height: 100%;
+  padding: 10px;
+}
+.modal__total {
+  color: var(--pricing-schedule-headings-color);
+  text-decoration: underline;
+  margin: 5px;
+}
+.modal__close {
+  padding: 2px 4px;
+  background-color: var(--alternative-additionals-background-color);
+  color: var(--additionals-background-color);
+  font-weight: 500;
+  box-shadow: 1px 1px 3px var(--shadow-color);
+  border: none;
+}
+.modal__list {
+  list-style: none;
+  max-height: 160px;
+  overflow-y: scroll;
+}
+.modal__item {
+  color: white;
+  border-bottom: 1px solid var(--pricing-schedule-headings-color);
+  padding: 5px 10px;
+}
+.modal__item-remove-button {
+  padding: 2px 4px;
+  background-color: var(--alternative-additionals-background-color);
+  color: var(--additionals-background-color);
+  font-weight: 500;
+  box-shadow: 1px 1px 3px var(--shadow-color);
+  border: none;
+}
+.modal__form {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.modal__number {
+  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.modal__submit {
+  position: relative;
+  padding: 2px 4px;
+  background-color: var(--additionals-background-color);
+  color: var(--alternative-additionals-background-color);
+  font-weight: 500;
+  box-shadow: 1px 1px 3px var(--shadow-color);
+  border: none;
+}
+@media (max-width: 768px) {
+  .pricing-schedule-container {
     flex-direction: column;
+  }
+  .pricing-schedule__prices{
+    position: static;
+  }
+  .pricing-schedule__modal{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal__content{
+    max-width: 400px;
+    height: auto;
+    max-height: 350px;
   }
 }

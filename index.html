@@ -6,6 +6,7 @@
     <title>VikDental</title>
     <link rel="stylesheet" href="css/index.css" />
     <link rel="icon" href="img/icon.png" type="image/x-icon" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
     <header class="header">
@@ -19,10 +20,22 @@
           </div>
           <div class="header__nav-buttons-container">
             <ul class="header__nav-buttons">
-              <li class="header__nav-button"><a class="header__nav-link" href="index.html#about">About Us</a></li>
-              <li class="header__nav-button"><a class="header__nav-link" href="index.html#team">Our Team</a></li>
-              <li class="header__nav-button"><a class="header__nav-link" href="index.html#pricing-schedule">Pricing</a></li>
-              <li class="header__nav-book-button"><a class="header__nav-link" href="index.html#pricing-schedule">Book an Appointment</a></li>
+              <li class="header__nav-button">
+                <a class="header__nav-link" href="index.html#about">About Us</a>
+              </li>
+              <li class="header__nav-button">
+                <a class="header__nav-link" href="index.html#team">Our Team</a>
+              </li>
+              <li class="header__nav-button">
+                <a class="header__nav-link" href="index.html#pricing-schedule"
+                  >Pricing</a
+                >
+              </li>
+              <li class="header__nav-book-button">
+                <a class="header__nav-link" href="index.html#pricing-schedule"
+                  >Book an Appointment</a
+                >
+              </li>
             </ul>
           </div>
         </nav>
@@ -41,8 +54,14 @@
               </p>
             </div>
             <div class="header__hero-buttons">
-              <a class="header__hero-button" href="index.html#pricing-schedule">Book an Appointment</a>
-              <a class="header__hero-button--alternative" href="index.html#pricing-schedule">See Pricing</a>
+              <a class="header__hero-button" href="index.html#pricing-schedule"
+                >Book an Appointment</a
+              >
+              <a
+                class="header__hero-button--alternative"
+                href="index.html#pricing-schedule"
+                >See Pricing</a
+              >
             </div>
           </div>
           <img
@@ -73,21 +92,31 @@
             <div class="about__additional">
               <div class="about__excellence">
                 <div class="about__card">
-                  <img class="about__card-image" src="img/cup-icon.png" alt="Cup icon"/>
+                  <img
+                    class="about__card-image"
+                    src="img/cup-icon.png"
+                    alt="Cup icon"
+                  />
                   <h4 class="about__card-title">Working for Years</h4>
                   <p class="about__card-info">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
                 <div class="about__card">
-                  <img class="about__card-image" src="img/star-icon.png" alt="Star icon"/>
+                  <img
+                    class="about__card-image"
+                    src="img/star-icon.png"
+                    alt="Star icon"
+                  />
                   <h4 class="about__card-title">Customers satisfied</h4>
                   <p class="about__card-info">
                     Morbi faucibus nec lacus at condimentum.
                   </p>
                 </div>
               </div>
-              <a class="about__more-button" href="index.html#pricing-schedule">Pricing</a>
+              <a class="about__more-button" href="index.html#pricing-schedule"
+                >Pricing</a
+              >
             </div>
           </div>
         </div>
@@ -181,20 +210,57 @@
           <div class="pricing-schedule__prices">
             <h2 class="pricing-schedule__heading">Prices</h2>
             <ul class="pricing-schedule__price-list">
-              <li class="pricing-schedule__price-item">
-                Initial Consultation: $50
-              </li>
-              <li class="pricing-schedule__price-item">
-                Routine Dental Exam: $70
-              </li>
-              <li class="pricing-schedule__price-item">Digital X-rays: $100</li>
-              <li class="pricing-schedule__price-item">
-                Oral Cancer Screening: $100
-              </li>
-              <li class="pricing-schedule__price-item">
-                Professional Cleaning (Prophylaxis): $120
+              <li
+                :id="service.id"
+                class="pricing-schedule__price-item"
+                v-for="service in pricing"
+              >
+                {{service.title}}: ${{service.price}}
+                <button
+                  class="price-item__add-button"
+                  @click="addToCart(service)"
+                >
+                  Add
+                </button>
               </li>
             </ul>
+            <div class="pricing-schedule__total">
+              <button class="total__book" @click="isModalOpen=true">
+                Book
+                <p v-if="selectedServicesCount>0" class="total__count">
+                  {{selectedServicesCount}}
+                </p>
+              </button>
+            </div>
+            <div v-if="isModalOpen" class="pricing-schedule__modal">
+              <div class="modal__content">
+                <button class="modal__close" @click="isModalOpen=false">
+                  Close
+                </button>
+                <h3 class="modal__total">Your fee - {{totalPrice}}$</h3>
+                <ul class="modal__list">
+                  <li
+                    class="modal__item"
+                    v-for="service in selectedServicesDetails"
+                    :key="service.id"
+                  >
+                    <div class="modal__item-text">
+                      <p>{{service.title}}: ${{ service.price}}</p>
+                    </div>
+                    <button
+                      class="modal__item-remove-button"
+                      @click="removeFromCart(index)"
+                    >
+                      Remove
+                    </button>
+                  </li>
+                </ul>
+                <form v-if="selectedServicesCount>0" class="modal__form">
+                  <input class="modal__number" placeholder="" type="text" />
+                  <input class="modal__submit" type="submit" />
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -223,5 +289,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/pricing-schedule.js"></script>
   </body>
 </html>
